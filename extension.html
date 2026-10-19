@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="خطوات إضافة KiT Extension إلى Chrome أو Microsoft Edge وربطها ببرنامج KiT Tools.">
+  <link rel="icon" href="kit-tools.ico">
+  <title>إضافة KiT للمتصفح — KiT Tools</title>
+  <style>
+    :root{color-scheme:dark;--bg:#09090b;--panel:#111114;--line:#29292f;--red:#f04452;--text:#f6f3f4;--muted:#aaa5aa;--green:#69d7a5}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(920px,calc(100% - 36px));margin:auto}
+    .topbar{border-bottom:1px solid #ffffff15;background:#09090bf2}
+    .nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:18px}
+    .brand img{width:34px;height:34px;object-fit:contain}
+    .brand b{color:var(--red)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .back,.lang{border:1px solid #ffffff24;border-radius:9px;background:#ffffff08;color:var(--text);padding:8px 12px;cursor:pointer}
+    .back:hover,.lang:hover{border-color:#f0445277;background:#f0445212}
+    main{padding:52px 0 68px}
+    .eyebrow{color:#ff7e88;font-size:12px;font-weight:800}
+    h1{font-size:38px;line-height:1.35;letter-spacing:0;margin:8px 0 12px}
+    .lead{max-width:760px;color:var(--muted);margin:0}
+    .browser-section{margin-top:34px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .section-label{display:block;font-size:13px;font-weight:750;margin-bottom:12px}
+    .browser-tabs{display:flex;gap:8px;flex-wrap:wrap;direction:ltr}
+    .browser-tab{border:1px solid #ffffff24;border-radius:8px;background:#ffffff06;color:#c9c4c8;padding:8px 14px;cursor:pointer}
+    .browser-tab[aria-pressed="true"]{border-color:#f0445280;background:#f0445217;color:#fff}
+    .address-row{display:flex;align-items:center;gap:10px;margin-top:14px}
+    .address-row code,.path-row code{direction:ltr;unicode-bidi:embed;text-align:left;overflow-wrap:anywhere;font-family:Consolas,monospace;color:#ff9299;background:#ffffff08;border:1px solid #ffffff14;border-radius:7px;padding:8px 10px}
+    .address-row code{flex:1}
+    .action{border:1px solid #f0445266;border-radius:8px;background:#f0445214;color:#fff;padding:8px 12px;font-weight:750;white-space:nowrap;cursor:pointer}
+    .action:hover{background:#f0445228;border-color:var(--red)}
+    .steps{margin-top:30px}
+    .step{display:grid;grid-template-columns:38px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid #ffffff12}
+    .number{width:30px;height:30px;display:grid;place-items:center;border:1px solid #f0445266;border-radius:50%;color:#ff7e88;font-weight:800;font-size:13px;direction:ltr}
+    .step h2{font-size:17px;line-height:1.5;margin:0 0 4px}
+    .step p{font-size:14px;color:var(--muted);margin:0}
+    .path-row{display:flex;align-items:center;gap:10px;margin-top:10px}
+    .path-row code{flex:1}
+    .note{margin-top:22px;padding:14px 16px;border-inline-start:3px solid var(--red);background:#f044520e;border-radius:7px;color:#d6d0d4;font-size:13px}
+    .footer{border-top:1px solid #ffffff14;padding:20px 0;color:#918b91;font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .footer a{color:#ddd}
+    @media(max-width:560px){.wrap{width:calc(100% - 28px)}main{padding:34px 0 48px}h1{font-size:30px;line-height:1.45}.nav{min-height:62px}.brand{font-size:16px}.back{font-size:12px;padding:7px 9px}.address-row,.path-row{align-items:stretch;flex-direction:column}.address-row code,.path-row code{width:100%}.action{width:100%}.step{grid-template-columns:32px minmax(0,1fr);gap:10px}.step h2{font-size:16px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="التنقل الرئيسي">
+      <a class="brand" href="index.html"><img src="kit-tools.ico" alt=""><span>KiT <b>Tools</b></span></a>
+      <div class="nav-actions">
+        <a class="back" href="index.html" data-ar="العودة إلى الموقع" data-en="Back to website">العودة إلى الموقع</a>
+        <button class="lang" id="language-toggle" type="button" aria-label="Switch language">English</button>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <span class="eyebrow" data-ar="إعداد لمرة واحدة" data-en="ONE-TIME SETUP">إعداد لمرة واحدة</span>
+    <h1 data-ar="إضافة KiT Extension إلى المتصفح" data-en="Add KiT Extension to your browser">إضافة KiT Extension إلى المتصفح</h1>
+    <p class="lead" data-ar="اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط." data-en="Follow these steps to add the extension to Chrome or Microsoft Edge and connect it to KiT Tools. You only need to do this once.">اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط.</p>
+
+    <section class="browser-section" aria-labelledby="browser-label">
+      <span class="section-label" id="browser-label" data-ar="اختر متصفحك لعرض عنوان صفحة الإضافات" data-en="Choose your browser to show its extensions address">اختر متصفحك لعرض عنوان صفحة الإضافات</span>
+      <div class="browser-tabs" id="browser-tabs" role="group" aria-label="المتصفح" data-ar-label="المتصفح" data-en-label="Browser">
+        <button class="browser-tab" type="button" data-browser="chrome" aria-pressed="true">Chrome</button>
+        <button class="browser-tab" type="button" data-browser="edge" aria-pressed="false">Microsoft Edge</button>
+      </div>
+      <div class="address-row">
+        <code id="browser-address">chrome://extensions/</code>
+        <button class="action" id="copy-address" type="button" data-ar="نسخ العنوان" data-en="Copy address">نسخ العنوان</button>
+      </div>
+    </section>
+
+    <section class="steps" aria-label="Installation steps">
+      <article class="step">
+        <span class="number">1</span>
+        <div><h2 data-ar="جهّز ملفات الإضافة" data-en="Prepare the extension files">جهّز ملفات الإضافة</h2>
+          <p data-ar="افتح KiT Tools، ثم انتقل إلى الإعدادات ← الاعتماديات واضغط «تنزيل إضافة المتصفح». سيجهز البرنامج الملفات ويفتح مجلد الإضافة." data-en="Open KiT Tools, go to Settings → Dependencies, then select “Download browser extension”. KiT Tools will prepare the files and open the extension folder.">افتح KiT Tools، ثم انتقل إلى الإعدادات ← الاعتماديات واضغط «تنزيل إضافة المتصفح». سيجهز البرنامج الملفات ويفتح مجلد الإضافة.</p>
+        </div>
+      </article>
+      <article class="step">
+        <span class="number">2</span>
+        <div><h2 data-ar="افتح صفحة الإضافات" data-en="Open the extensions page">افتح صفحة الإضافات</h2>
+          <p data-ar="انسخ العنوان أعلاه، وافتح تبويبًا جديدًا في المتصفح، والصقه في شريط العنوان ثم اضغط Enter." data-en="Copy the address above, open a new browser tab, paste it into the address bar, and press Enter.">انسخ العنوان أعلاه، وافتح تبويبًا جديدًا في المتصفح، والصقه في شريط العنوان ثم اضغط Enter.</p>
+        </div>
+      </article>
+      <article class="step">
+        <span class="number">3</span>
+        <div><h2 data-ar="فعّل وضع المطوّر" data-en="Enable Developer mode">فعّل وضع المطوّر</h2>
+          <p data-ar="فعّل مفتاح «وضع المطوّر» في صفحة الإضافات. سيظهر بعدها زر تحميل الإضافة يدويًا." data-en="Turn on “Developer mode” on the extensions page. A button for loading an unpacked extension will appear.">فعّل مفتاح «وضع المطوّر» في صفحة الإضافات. سيظهر بعدها زر تحميل الإضافة يدويًا.</p>
+        </div>
+      </article>
+      <article class="step">
+        <span class="number">4</span>
+        <div><h2 data-ar="حمّل الإضافة واختر مجلدها" data-en="Load the extension folder">حمّل الإضافة واختر مجلدها</h2>
+          <p data-ar="اضغط «تحميل إضافة تم فك حزمتها» (Load unpacked)، ثم اختر مجلد KiT_Extension الذي فتحه البرنامج في الخطوة الأولى. المسار الافتراضي يكون عادةً:" data-en="Click “Load unpacked”, then select the KiT_Extension folder opened by the app in step 1. Its default location is usually:">اضغط «تحميل إضافة تم فك حزمتها» (Load unpacked)، ثم اختر مجلد KiT_Extension الذي فتحه البرنامج في الخطوة الأولى. المسار الافتراضي يكون عادةً:</p>
+          <div class="path-row"><code id="extension-path">%USERPROFILE%\Documents\KiT_Tools\KiT_Extension</code><button class="action" id="copy-path" type="button" data-ar="نسخ المسار" data-en="Copy path">نسخ المسار</button></div>
+        </div>
+      </article>
+      <article class="step">
+        <span class="number">5</span>
+        <div><h2 data-ar="ثبّت الإضافة في شريط المتصفح" data-en="Pin the extension to your toolbar">ثبّت الإضافة في شريط المتصفح</h2>
+          <p data-ar="بعد ظهور KiT Extension في القائمة، افتح قائمة الإضافات وثبّت رمزها في شريط الأدوات لتسهيل الوصول إليها." data-en="When KiT Extension appears in the list, open the browser’s extensions menu and pin its icon to the toolbar for quick access.">بعد ظهور KiT Extension في القائمة، افتح قائمة الإضافات وثبّت رمزها في شريط الأدوات لتسهيل الوصول إليها.</p>
+        </div>
+      </article>
+    </section>
+
+    <aside class="note" data-ar="إذا كان مجلد Documents لديك في موقع مخصص، اختر المجلد الذي فتحه KiT Tools بدل المسار الافتراضي. يجب أن يحتوي المجلد المختار على manifest.json." data-en="If your Documents folder is in a custom location, select the folder opened by KiT Tools instead of the default path. The selected folder must contain manifest.json.">إذا كان مجلد Documents لديك في موقع مخصص، اختر المجلد الذي فتحه KiT Tools بدل المسار الافتراضي. يجب أن يحتوي المجلد المختار على manifest.json.</aside>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><a href="index.html">KiT Tools</a><span data-ar="إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge." data-en="The browser extension currently supports Chrome and Microsoft Edge.">إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge.</span></div></footer>
+  <script>
+    (()=>{
+      const root=document.documentElement,languageButton=document.getElementById('language-toggle');
+      const address=document.getElementById('browser-address');
+      let lang='ar',browser='chrome';
+      try{const saved=localStorage.getItem('kit-tools-site-language');if(saved==='en'||saved==='ar')lang=saved}catch{}
+      function applyLanguage(next){
+        lang=next;root.lang=lang;root.dir=lang==='ar'?'rtl':'ltr';
+        document.title=lang==='ar'?'إضافة KiT للمتصفح — KiT Tools':'Add KiT Extension — KiT Tools';
+        document.querySelectorAll('[data-ar][data-en]').forEach(el=>{el.textContent=el.dataset[lang]});
+        document.querySelectorAll('[data-ar-label][data-en-label]').forEach(el=>el.setAttribute('aria-label',el.dataset[lang+'Label']));
+        languageButton.textContent=lang==='ar'?'English':'العربية';
+        languageButton.setAttribute('aria-label',lang==='ar'?'Switch language':'تبديل اللغة');
+        try{localStorage.setItem('kit-tools-site-language',lang)}catch{}
+      }
+      function setBrowser(next){
+        browser=next;address.textContent=browser==='edge'?'edge://extensions/':'chrome://extensions/';
+        document.querySelectorAll('.browser-tab').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.browser===browser)));
+      }
+      async function copyText(text,button){
+        const original=button.textContent;
+        try{await navigator.clipboard.writeText(text)}catch{
+          const field=document.createElement('textarea');field.value=text;field.style.position='fixed';field.style.opacity='0';document.body.append(field);field.select();document.execCommand('copy');field.remove();
+        }
+        button.textContent=lang==='ar'?'تم النسخ':'Copied';
+        window.setTimeout(()=>{button.textContent=original},1500);
+      }
+      languageButton.addEventListener('click',()=>applyLanguage(lang==='ar'?'en':'ar'));
+      document.querySelectorAll('.browser-tab').forEach(button=>button.addEventListener('click',()=>setBrowser(button.dataset.browser)));
+      document.getElementById('copy-address').addEventListener('click',event=>copyText(address.textContent,event.currentTarget));
+      document.getElementById('copy-path').addEventListener('click',event=>copyText(document.getElementById('extension-path').textContent,event.currentTarget));
+      applyLanguage(lang);setBrowser(browser);
+    })();
+  </script>
+</body>
+</html>
