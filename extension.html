@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#09090b">
-  <meta name="description" content="خطوات إضافة KiT Extension إلى Chrome أو Microsoft Edge وربطها ببرنامج KiT Tools.">
+  <meta name="description" content="خطوات إضافة KiT Extension إلى Chrome أو Microsoft Edge أو Brave وربطها ببرنامج KiT Tools.">
   <link rel="icon" href="kit-tools.ico">
   <title>إضافة KiT للمتصفح — KiT Tools</title>
   <style>
@@ -63,13 +63,14 @@
   <main class="wrap">
     <span class="eyebrow" data-ar="إعداد لمرة واحدة" data-en="ONE-TIME SETUP">إعداد لمرة واحدة</span>
     <h1 data-ar="إضافة KiT Extension إلى المتصفح" data-en="Add KiT Extension to your browser">إضافة KiT Extension إلى المتصفح</h1>
-    <p class="lead" data-ar="اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط." data-en="Follow these steps to add the extension to Chrome or Microsoft Edge and connect it to KiT Tools. You only need to do this once.">اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط.</p>
+    <p class="lead" data-ar="اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge أو Brave وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط." data-en="Follow these steps to add the extension to Chrome, Microsoft Edge, or Brave and connect it to KiT Tools. You only need to do this once.">اتبع الخطوات لإضافة الامتداد إلى Chrome أو Microsoft Edge أو Brave وربطه ببرنامج KiT Tools. تحتاج إلى إتمام هذه الخطوات مرة واحدة فقط.</p>
 
     <section class="browser-section" aria-labelledby="browser-label">
       <span class="section-label" id="browser-label" data-ar="اختر متصفحك لعرض عنوان صفحة الإضافات" data-en="Choose your browser to show its extensions address">اختر متصفحك لعرض عنوان صفحة الإضافات</span>
       <div class="browser-tabs" id="browser-tabs" role="group" aria-label="المتصفح" data-ar-label="المتصفح" data-en-label="Browser">
         <button class="browser-tab" type="button" data-browser="chrome" aria-pressed="true">Chrome</button>
         <button class="browser-tab" type="button" data-browser="edge" aria-pressed="false">Microsoft Edge</button>
+        <button class="browser-tab" type="button" data-browser="brave" aria-pressed="false">Brave</button>
       </div>
       <div class="address-row">
         <code id="browser-address">chrome://extensions/</code>
@@ -81,7 +82,7 @@
       <article class="step">
         <span class="number">1</span>
         <div><h2 data-ar="جهّز ملفات الإضافة" data-en="Prepare the extension files">جهّز ملفات الإضافة</h2>
-          <p data-ar="افتح KiT Tools، ثم انتقل إلى الإعدادات ← الاعتماديات واضغط «تنزيل إضافة المتصفح». سيجهز البرنامج الملفات ويفتح مجلد الإضافة." data-en="Open KiT Tools, go to Settings → Dependencies, then select “Download browser extension”. KiT Tools will prepare the files and open the extension folder.">افتح KiT Tools، ثم انتقل إلى الإعدادات ← الاعتماديات واضغط «تنزيل إضافة المتصفح». سيجهز البرنامج الملفات ويفتح مجلد الإضافة.</p>
+          <p data-ar="افتح KiT Tools، ثم انتقل إلى الإعدادات ← الملفات الضرورية واضغط «تنزيل إضافة المتصفح». سيجهّز البرنامج الملفات ويفتح مجلد الإضافة." data-en="Open KiT Tools, go to Settings → Required files, then select “Download browser extension”. KiT Tools will prepare the files and open the extension folder.">افتح KiT Tools، ثم انتقل إلى الإعدادات ← الملفات الضرورية واضغط «تنزيل إضافة المتصفح». سيجهّز البرنامج الملفات ويفتح مجلد الإضافة.</p>
         </div>
       </article>
       <article class="step">
@@ -113,7 +114,7 @@
 
     <aside class="note" data-ar="إذا كان مجلد Documents لديك في موقع مخصص، اختر المجلد الذي فتحه KiT Tools بدل المسار الافتراضي. يجب أن يحتوي المجلد المختار على manifest.json." data-en="If your Documents folder is in a custom location, select the folder opened by KiT Tools instead of the default path. The selected folder must contain manifest.json.">إذا كان مجلد Documents لديك في موقع مخصص، اختر المجلد الذي فتحه KiT Tools بدل المسار الافتراضي. يجب أن يحتوي المجلد المختار على manifest.json.</aside>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><a href="index.html">KiT Tools</a><span data-ar="إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge." data-en="The browser extension currently supports Chrome and Microsoft Edge.">إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge.</span></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><a href="index.html">KiT Tools</a><span data-ar="إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge وBrave." data-en="The browser extension currently supports Chrome, Microsoft Edge, and Brave.">إضافة المتصفح متوافقة حاليًا مع Chrome وMicrosoft Edge وBrave.</span></div></footer>
   <script>
     (()=>{
       const root=document.documentElement,languageButton=document.getElementById('language-toggle');
@@ -130,7 +131,7 @@
         try{localStorage.setItem('kit-tools-site-language',lang)}catch{}
       }
       function setBrowser(next){
-        browser=next;address.textContent=browser==='edge'?'edge://extensions/':'chrome://extensions/';
+        browser=next;address.textContent=browser==='edge'?'edge://extensions/':browser==='brave'?'brave://extensions/':'chrome://extensions/';
         document.querySelectorAll('.browser-tab').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.browser===browser)));
       }
       async function copyText(text,button){
